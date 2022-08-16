@@ -2,7 +2,6 @@ import math
 import torch
 import torch.nn as nn
 import torch.utils.checkpoint as checkpoint
-# from basicsr.archs.arch_util import to_2tuple, trunc_normal_
 import math
 from torch.nn import functional as F
 import warnings
@@ -955,7 +954,7 @@ class GHASR(nn.Module):
 
         # ---------------- 3, features of different levels integration ------------------------- #
         if self.mhsm_flag:
-            self.gffm = GFFM(4, len(depths), embed_dim)
+            self.gffm = GFFM(upscale, len(depths), embed_dim)
         if self.mltfem_flag:
             self.mltfem = MLTFEM(embed_dim)
 
